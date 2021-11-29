@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "njoyshadowsmod.njoyshadowsmod.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "ReceiveMessage"
+  ],
+  "client": [
+    "ReceiveMessage"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

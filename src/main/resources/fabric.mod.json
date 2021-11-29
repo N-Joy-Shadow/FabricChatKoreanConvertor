@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "njoyshadowsmod",
+  "version": "${version}",
+  "name": "njoyshadowsmod",
+  "description": "NJoyShadowsMod",
+  "authors": [
+    "NJoyShadow"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/NJoyShadowsMod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "njoyshadowsmod.njoyshadowsmod.client.NJoyShadowsModClient"
+    ],
+    "main": [
+      "njoyshadowsmod.njoyshadowsmod.NJoyShadowsMod"
+    ]
+  },
+  "mixins": [
+    "NJoyShadowsMod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.5",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
