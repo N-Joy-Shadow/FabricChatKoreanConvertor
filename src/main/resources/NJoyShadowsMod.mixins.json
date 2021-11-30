@@ -4,10 +4,10 @@
   "package": "njoyshadowsmod.njoyshadowsmod.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "ReceiveMessage"
+    "MixinServerPlayNetworkHandler"
   ],
   "client": [
-    "ReceiveMessage"
+    "MixinServerPlayNetworkHandler"
   ],
   "injectors": {
     "defaultRequire": 1
