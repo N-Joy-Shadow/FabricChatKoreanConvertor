@@ -8,6 +8,6 @@ import net.fabricmc.api.Environment;
 public class NJoyShadowsModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        System.out.println("응아잇~~어");
+        System.out.println("sout");
     }
 }
