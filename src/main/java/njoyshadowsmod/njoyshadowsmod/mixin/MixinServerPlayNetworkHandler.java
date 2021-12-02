@@ -28,8 +28,8 @@ import java.util.List;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public abstract class MixinServerPlayNetworkHandler {
-            @Shadow public abstract ServerPlayerEntity getPlayer();
-            @Shadow @Final private MinecraftServer server;
+    @Shadow public abstract ServerPlayerEntity getPlayer();
+    @Shadow @Final private MinecraftServer server;
     private final static EnglishToKorean englishToKorean = new KoreanConvertorUtil();
 
     @Shadow public ServerPlayerEntity player;
@@ -48,7 +48,7 @@ public abstract class MixinServerPlayNetworkHandler {
         String string = message.getFiltered();
 
         String test= new SplitExceptString().getString(Rawstring);
-        System.out.println(test);
+        System.out.println(test + "mixin");
         //translator
         if(Rawstring.startsWith("-")){
             string = englishToKorean.engToKor(Rawstring.substring(1));
