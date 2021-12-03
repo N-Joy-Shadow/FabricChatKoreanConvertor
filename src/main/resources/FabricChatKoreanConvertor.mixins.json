@@ -1,13 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "njoyshadowsmod.njoyshadowsmod.mixin",
+  "package": "njoyshadowsmod.fabricchatkoreanconvertor.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MixinServerPlayNetworkHandler"
   ],
   "client": [
-    "MixinServerPlayNetworkHandler"
   ],
   "injectors": {
     "defaultRequire": 1
