@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "FabricChatKoreanConvertor",
+  "id": "fabricchatkoreanconvertor",
   "version": "${version}",
   "name": "FabricChatKoreanConvertor",
   "description": "",
@@ -14,9 +14,7 @@
   "icon": "assets/FabricChatKoreanConvertor/icon.png",
   "environment": "server",
   "entrypoints": {
-    "client": [
-      "njoyshadowsmod.fabricchatkoreanconvertor.client.FabricChatKoreanConvertorClient"
-    ],
+    "client": [],
     "main": [
       "njoyshadowsmod.fabricchatkoreanconvertor.FabricChatKoreanConvertor"
     ]
