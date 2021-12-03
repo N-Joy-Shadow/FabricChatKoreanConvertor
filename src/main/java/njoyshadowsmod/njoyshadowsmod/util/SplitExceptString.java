@@ -1,6 +1,9 @@
 package njoyshadowsmod.njoyshadowsmod.util;
 
 
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,29 +12,58 @@ public class SplitExceptString {
     private final static EnglishToKorean englishToKorean = new KoreanConvertorUtil();
 
     public String getString(String string){
-        // " "을 범위로 하여 영어로 변환할 지 말지 정함
-        List<String> rawString = Arrays.asList(string.split("\""));
-        List<String> newString = null;
+        int index = -1;
+        String result = string;
+        List<Integer> exceptNum = new ArrayList<>();
 
-        if(rawString.size() % 2 == 0){
-            System.out.println(string);
-            return string;
+        if(string.indexOf("\"") == -1){
+            result = englishToKorean.engToKor(string);
         }
         else{
-            System.out.println(string);
-            for(int i = 0; i < rawString.size(); i++)
-            {
-                if(i % 2 == 0)
-                {
-                    newString.add(englishToKorean.engToKor(rawString.get(i)));
+            //""의 인덱스 위치를 구합니다.
+            while((index = string.indexOf("\"", index + 1)) >= 0) {
+                exceptNum.add(index);
+            }
 
-                }
-                else
-                {
-                    newString.add(rawString.get(i));
+
+            List<String> ExceptString = new ArrayList<>();
+            //구한 인덱스를 가지고 "{context}"에서 context를 구합니다.
+            for(int i = 0;i < exceptNum.size() - 1; i += 2){
+                int StartExecpt = exceptNum.get((i));
+                int EndExecpt = exceptNum.get((i + 1));
+
+                String extractString = string.substring(StartExecpt + 1,EndExecpt);
+                //context를 리스트에 담습니다.
+                if(!extractString.isEmpty() || !extractString.isBlank()){
+                    ExceptString.add(extractString);
                 }
             }
-            return newString.stream().collect(Collectors.joining(" "));
+            //글자를 번역합니다
+            String translateString = englishToKorean.engToKor(string);
+            /*
+            * 여기부턴 글자를 바꾸는 역활을 합니다.
+            * */
+            //안에 내용 클리어
+            exceptNum.clear();
+            while((index = translateString.indexOf("\"", index + 1)) >= 0) {
+                exceptNum.add(index);
+            }
+            //
+            for(int i = 0;i < exceptNum.size() - 1; i += 2){
+                int StartExecpt = exceptNum.get((i));
+                int EndExecpt = exceptNum.get((i + 1));
+
+                String extractString = translateString.substring(StartExecpt + 1,EndExecpt);
+                //context를 리스트에 담습니다.
+                try{
+                    result = translateString.replace(String.format("\"%s\"",extractString),ExceptString.get(i));
+                }
+                catch (IndexOutOfBoundsException E){
+                    return result;
+                }
+            }
         }
+        return result;
     }
 }
+

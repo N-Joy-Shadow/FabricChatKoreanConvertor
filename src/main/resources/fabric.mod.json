@@ -13,7 +13,6 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "njoyshadowsmod.njoyshadowsmod.client.NJoyShadowsModClient"
     ],
     "main": [
       "njoyshadowsmod.njoyshadowsmod.NJoyShadowsMod"

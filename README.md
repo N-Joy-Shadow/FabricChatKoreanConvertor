@@ -13,6 +13,6 @@
 
 #### example
 ```powershell
-> -dkssudgktpdy 'everyone'
+> -dkssudgktpdy "everyone"
 안녕하세요 everyone
 ```

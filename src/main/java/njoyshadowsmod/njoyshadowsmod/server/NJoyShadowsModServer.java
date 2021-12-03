@@ -9,7 +9,5 @@ import net.fabricmc.api.Environment;
 public class NJoyShadowsModServer implements DedicatedServerModInitializer {
     @Override
     public void onInitializeServer() {
-        System.out.println("Shout");
-
     }
 }
