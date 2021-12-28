@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class ExceptStringUtil {
-    private final static IEnglishToKorean englishToKorean = new KoreanConvertorUtil();
+    private final static KoreanConvertorUtil englishToKorean = new KoreanConvertorUtil();
 
     public String getString(String string){
         int index = -1;

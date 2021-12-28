@@ -3,7 +3,7 @@ package njoyshadowsmod.fabricchatkoreanconvertor.utils;
 import java.util.Arrays;
 import java.util.List;
 
-public class KoreanConvertorUtil implements IEnglishToKorean {
+public class KoreanConvertorUtil {
     enum CodeType {
     chosung, jungsung, jongsung
 }

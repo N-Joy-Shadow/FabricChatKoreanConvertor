@@ -16,6 +16,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.UUID;
+
 @Mixin(ServerPlayNetworkHandler.class)
 public abstract class MixinServerPlayNetworkHandler {
     @Shadow @Final private MinecraftServer server;
@@ -29,9 +31,10 @@ public abstract class MixinServerPlayNetworkHandler {
     ),
     cancellable = true)
     public void receiveMessage(TextStream.Message message, CallbackInfo ci) {
+        UUID playerUuid = this.player.getUuid();
         //cancel send message
         ci.cancel();
-        //message
+        //get message
         String Rawstring = message.getRaw();
         String string = message.getFiltered();
         //translator
