@@ -43,12 +43,13 @@ public class FabricChatKoreanConvertor implements ModInitializer {
 
                 return 1;
             }));
+            /*
             dispatcher.register((literal("enklist").executes(context -> {
                 for (EnKData playerdata : UUidUtil.playerList){
                     System.out.println(playerdata.getUUID());
                 }
                 return 1;
-            })));
+            })));*/
         });
     }
 }

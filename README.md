@@ -5,17 +5,21 @@
 
 #### example
 ```powershell
-> -dkssudgktpdy
+> /enk
+enk is enable
+> dkssudgktpdy
 안녕하세요
 ```
 `"{context}"`를 사용해서 해서 영어로 안 바꿀 부분을 정해 줄 수 있습니다.
 
 #### example
 ```powershell
-> -dkssudgktpdy "everyone"
+> /enk 
+enk is enable
+> dkssudgktpdy "everyone"
 안녕하세요 everyone
 ```
 
 # TODO
-접두사 `-` 대신 명렁어로 번역할 수 있게 하기
+최적화 하기
 
