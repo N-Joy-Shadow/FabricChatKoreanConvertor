@@ -6,10 +6,11 @@ public class EnKData {
     private UUID playerUUID;
     private boolean IsEnable;
 
-    public  EnKData(UUID uuid,boolean isEnable){
+    public EnKData(UUID uuid,boolean isEnable){
         this.playerUUID = uuid;
         this.IsEnable = isEnable;
     }
+
 
     public void setUUID(UUID uuid){
         this.playerUUID = uuid;

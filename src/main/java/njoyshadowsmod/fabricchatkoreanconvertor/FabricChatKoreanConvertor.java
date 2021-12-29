@@ -1,7 +1,10 @@
 package njoyshadowsmod.fabricchatkoreanconvertor;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientLoginConnectionEvents;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.network.C2SPacketTypeCallback;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.text.Text;
 import njoyshadowsmod.fabricchatkoreanconvertor.utils.EnKData;
 import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil;
@@ -27,7 +30,7 @@ public class FabricChatKoreanConvertor implements ModInitializer {
                         IsExist = true;
 
                         playerdata.setIsEnable(!playerdata.getIsEnable());
-                        context.getSource().getPlayer().sendSystemMessage(Text.of(String.format("EnK is %b", playerdata.getIsEnable())),playerUUID);
+                        context.getSource().getPlayer().sendSystemMessage(Text.of(String.format("EnK is %s", (playerdata.getIsEnable() ? "enable" : "disable" ))),playerUUID);
                         break;
                     }
                 }
@@ -40,7 +43,12 @@ public class FabricChatKoreanConvertor implements ModInitializer {
 
                 return 1;
             }));
+            dispatcher.register((literal("enklist").executes(context -> {
+                for (EnKData playerdata : UUidUtil.playerList){
+                    System.out.println(playerdata.getUUID());
+                }
+                return 1;
+            })));
         });
-
     }
 }
