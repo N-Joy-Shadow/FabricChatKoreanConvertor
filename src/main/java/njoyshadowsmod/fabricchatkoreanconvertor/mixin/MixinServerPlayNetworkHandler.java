@@ -7,7 +7,10 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.TranslatableText;
 
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.EnKData;
 import njoyshadowsmod.fabricchatkoreanconvertor.utils.ExceptStringUtil;
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil;
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil.*;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,6 +27,8 @@ public abstract class MixinServerPlayNetworkHandler {
 
     @Shadow public ServerPlayerEntity player;
 
+    @Shadow public abstract ServerPlayerEntity getPlayer();
+
     @Inject(method = "handleMessage", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Ljava/util/function/Function;Lnet/minecraft/network/MessageType;Ljava/util/UUID;)V"
@@ -38,8 +43,11 @@ public abstract class MixinServerPlayNetworkHandler {
         String Rawstring = message.getRaw();
         String string = message.getFiltered();
         //translator
-        if(Rawstring.startsWith("-")){
-            string= new ExceptStringUtil().getString(Rawstring.substring(1));
+        for(EnKData playerdata : UUidUtil.playerList) {
+            if(this.getPlayer().getUuid() == playerdata.getUUID() && playerdata.getIsEnable()){
+                string= new ExceptStringUtil().getString(Rawstring);
+                break;
+            }
         }
 
 

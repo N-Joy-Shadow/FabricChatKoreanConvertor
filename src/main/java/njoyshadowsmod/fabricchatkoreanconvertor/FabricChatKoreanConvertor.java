@@ -34,7 +34,7 @@ public class FabricChatKoreanConvertor implements ModInitializer {
 
                 if(!IsExist){
                     UUidUtil.playerList.add(new EnKData(playerUUID,true));
-                    context.getSource().getPlayer().sendSystemMessage(Text.of(String.format("EnK is %s", "register")),playerUUID);
+                    context.getSource().getPlayer().sendSystemMessage(Text.of(String.format("EnK is %s", "enable")),playerUUID);
 
                 }
 
