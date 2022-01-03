@@ -7,10 +7,8 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.TranslatableText;
 
-import njoyshadowsmod.fabricchatkoreanconvertor.utils.EnKData;
 import njoyshadowsmod.fabricchatkoreanconvertor.utils.ExceptStringUtil;
-import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil;
-import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil.*;
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.UuidUtil;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -43,7 +41,7 @@ public abstract class MixinServerPlayNetworkHandler {
         String Rawstring = message.getRaw();
         String string = message.getFiltered();
         //translator
-        for(EnKData playerdata : UUidUtil.playerList) {
+        for(UuidUtil.EnKData playerdata : UuidUtil.playerList) {
             if(this.getPlayer().getUuid() == playerdata.getUUID() && playerdata.getIsEnable()){
                 string= new ExceptStringUtil().getString(Rawstring);
                 break;

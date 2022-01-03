@@ -1,16 +1,10 @@
 package njoyshadowsmod.fabricchatkoreanconvertor;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientLoginConnectionEvents;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.fabricmc.fabric.api.event.network.C2SPacketTypeCallback;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.text.Text;
-import njoyshadowsmod.fabricchatkoreanconvertor.utils.EnKData;
-import njoyshadowsmod.fabricchatkoreanconvertor.utils.UUidUtil;
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.UuidUtil;
 
-import javax.sql.rowset.BaseRowSet;
-import java.util.Arrays;
 import java.util.UUID;
 
 import static net.minecraft.server.command.CommandManager.literal;
@@ -25,7 +19,7 @@ public class FabricChatKoreanConvertor implements ModInitializer {
                 UUID playerUUID = context.getSource().getPlayer().getUuid();
                 boolean IsExist = false;
 
-                for (EnKData playerdata: UUidUtil.playerList) {
+                for (UuidUtil.EnKData playerdata: UuidUtil.playerList) {
                     if(playerdata.getUUID() == playerUUID){
                         IsExist = true;
 
@@ -36,20 +30,22 @@ public class FabricChatKoreanConvertor implements ModInitializer {
                 }
 
                 if(!IsExist){
-                    UUidUtil.playerList.add(new EnKData(playerUUID,true));
+                    UuidUtil.playerList.add(new UuidUtil.EnKData(playerUUID,true));
                     context.getSource().getPlayer().sendSystemMessage(Text.of(String.format("EnK is %s", "enable")),playerUUID);
 
                 }
 
                 return 1;
             }));
-            /*
-            dispatcher.register((literal("enklist").executes(context -> {
-                for (EnKData playerdata : UUidUtil.playerList){
+
+            //uuid list check
+            dispatcher.register((literal("uenklist").requires(source -> source.hasPermissionLevel(4)).executes(context -> {
+                for (UuidUtil.EnKData playerdata : UuidUtil.playerList){
                     System.out.println(playerdata.getUUID());
+                    System.out.println(playerdata.getIsEnable());
                 }
                 return 1;
-            })));*/
+            })));
         });
     }
 }
