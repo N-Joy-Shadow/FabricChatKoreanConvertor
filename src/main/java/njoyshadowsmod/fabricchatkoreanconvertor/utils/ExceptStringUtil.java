@@ -12,7 +12,7 @@ public class ExceptStringUtil {
         String result = string;
         List<Integer> exceptNum = new ArrayList<>();
 
-        if(string.indexOf("\"") == -1){
+        if(!string.contains("\"")){
             result = englishToKorean.engToKor(string);
         }
         else{

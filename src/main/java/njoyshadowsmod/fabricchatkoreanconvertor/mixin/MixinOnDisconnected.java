@@ -4,6 +4,7 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
+import njoyshadowsmod.fabricchatkoreanconvertor.utils.UuidUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,11 +19,11 @@ public abstract class MixinOnDisconnected {
     @Inject(method = "onDisconnected", at = @At(value = "HEAD"))
     public void onDisconnected(Text reason, CallbackInfo ci){
         UUID PlayerUUID = this.getPlayer().getUuid();
-/*
-        for(int i = 0; i < UUidUtil.playerList.size(); i++){
-            if(UUidUtil.playerList.get(i).getUUID() == PlayerUUID){
+
+        for(int i = 0; i < UuidUtil.playerList.size(); i++){
+            if(UuidUtil.playerList.get(i).getUUID() == PlayerUUID){
                 try{
-                    UUidUtil.playerList.remove(i);
+                    UuidUtil.playerList.remove(i);
                 }
                 catch (Exception E){
                     System.out.println(E.getMessage());
@@ -31,6 +32,5 @@ public abstract class MixinOnDisconnected {
             }
         }
 
-*/
     }
 }
