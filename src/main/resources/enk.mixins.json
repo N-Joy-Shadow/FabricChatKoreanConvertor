@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "njoyshadow.enk.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinServerPlayNetworkHandler"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
