@@ -34,7 +34,7 @@ public abstract class MixinServerPlayNetworkHandler {
         ci.cancel();
         String Message = packet.getChatMessage();
         for (UUidUtil.EnKData playerdata : UUidUtil.playerList) {
-            if (this.getPlayer().getUuid() == playerdata.getUUID() && playerdata.getIsEnable()) {
+            if (this.getPlayer().getUuid().equals(playerdata.getUUID()) && playerdata.getIsEnable()) {
                 Message = new ExceptionStringUtil().getString(Message);
                 break;
             }
