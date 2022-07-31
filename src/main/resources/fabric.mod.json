@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "enk",
+  "version": "${version}",
+  "name": "Enk",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "icon": "assets/enk/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "njoyshadow.enk.Enk"
+    ]
+  },
+  "mixins": [
+    "enk.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.19.1"
+  }
+}
